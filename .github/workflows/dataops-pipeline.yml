@@ -41,3 +41,17 @@ jobs:
             data/landing/**
             logs/**
           if-no-files-found: warn
+  transformation:
+    needs: ingestion
+    runs-on: ubuntu-latest
+    env:
+      ENV: dev
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3
