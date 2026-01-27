@@ -5,7 +5,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - "10_ingestion_dbx.py"
+      - "framework/ingestion/10_ingestion_dbx.py"
       - "data/source/**"
       - ".github/workflows/dataops-pipeline.yml"
 
@@ -31,7 +31,7 @@ jobs:
 
       - name: Run Databricks-style ingestion notebook
         run: |
-          python 10_ingestion_dbx.py
+          python framework/ingestion/10_ingestion_dbx.py
 
       - name: Upload ingestion evidence
         uses: actions/upload-artifact@v4
