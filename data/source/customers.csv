@@ -1,0 +1,6 @@
+customer_id,name,age,country,email
+1,Ana,28,PE,ana@example.com
+2,Luis,35,PE,luis@example.com
+3,María,30,CL,maria@example.com
+3,María,30,CL,maria_dup@example.com
+4,,17,AR,x@y.com
