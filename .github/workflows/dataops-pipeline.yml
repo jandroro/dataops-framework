@@ -33,7 +33,7 @@ jobs:
           DATABRICKS_HTTP_PATH: ${{ secrets.DATABRICKS_HTTP_PATH }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           CSV_PATH: data/source/customers.csv
-          TARGET_TABLE: demo.bronze_customers
+          TARGET_TABLE: dataops.bronze_customers
           SOURCE_NAME: github_actions
         run: |
           echo "PWD:"
