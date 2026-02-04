@@ -1,1 +1,1 @@
-Nombre: Jano Camacho
+Name: Jano Camacho
