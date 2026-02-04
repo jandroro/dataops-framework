@@ -233,9 +233,33 @@ jobs:
         run: |
           python framework/mlops/register_model.py
 
-  monitoring:
+  mlops-promote:
+    name: mlops-promote
     runs-on: ubuntu-latest
     needs: mlops-register
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install databricks-sql-connector
+
+      - name: Promote model to PROD
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_HTTP_PATH: ${{ secrets.DATABRICKS_HTTP_PATH }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          MODEL_NAME: customer_risk
+          REGISTRY_TABLE: dataops.model_registry
+        run: python framework/mlops/promote_model.py
+
+  monitoring:
+    runs-on: ubuntu-latest
+    needs: mlops-promote
     if: always()
     steps:
       - name: Checkout repository
